@@ -1,0 +1,23 @@
+{
+  "name": "threejs",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint ./src/**/*.js && prettier --write ./src"
+  },
+  "devDependencies": {
+    "@types/three": "^0.152.1",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-react": "^7.32.2",
+    "typescript": "^5.1.6",
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "three": "^0.154.0"
+  }
+}
