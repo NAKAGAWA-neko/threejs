@@ -1,17 +1,37 @@
 import * as THREE from "three";
 
 const scene = new THREE.Scene();
-
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const geometryA = new THREE.BoxGeometry(1, 1, 1);
-const materialA = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cubeA = new THREE.Mesh(geometryA, materialA);
-scene.add(cubeA);
+const cubeDetail = {
+  A: {
+    color: 0x00ff00,
+    position.x = 0,
+  },
+
+  B: {
+    color: 0xffff00,
+    position.x = 2,
+  },
+
+  C: {},
+
+  D: {},
+  E: {},
+};
+
+const addToScene = (cubeDetail) => {
+  const geometryA = new THREE.BoxGeometry(1, 1, 1);
+  const materialA = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+  const cubeA = new THREE.Mesh(geometryA, materialA);
+  scene.add(cubeA);
+};
+
+addToScene(cubeDetail);
 
 const geometryB = new THREE.BoxGeometry(1, 1, 1);
 const materialB = new THREE.MeshBasicMaterial({ color: 0xffff00 });
