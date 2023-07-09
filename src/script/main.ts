@@ -97,6 +97,18 @@ sphere.position.x = -5;
 sphere.position.y = 2;
 scene.add(sphere);
 
+//リング
+
+const geometryRing = new THREE.RingGeometry(1, 3, 10);
+const materialRing = new THREE.MeshBasicMaterial({
+  color: 0x00ff00,
+  side: THREE.DoubleSide,
+});
+const meshRing = new THREE.Mesh(geometryRing, materialRing);
+meshRing.position.x = 7;
+meshRing.position.y = 3;
+scene.add(meshRing);
+
 //カメラとアニメ化-------------------------
 
 camera.position.z = 10;
@@ -112,6 +124,10 @@ const animate = () => {
   // 球体の回転
   sphere.rotation.x += 0.03;
   sphere.rotation.y += 0.03;
+
+  // リングの回転
+  meshRing.rotation.x += 0.03;
+  meshRing.rotation.y += 0.03;
 
   renderer.render(scene, camera);
 };
