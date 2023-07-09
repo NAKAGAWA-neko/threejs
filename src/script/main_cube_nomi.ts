@@ -75,44 +75,29 @@ const addToScene = (
   return cube;
 };
 
-const cubes: {
-  mesh: THREE.Mesh<THREE.BoxGeometry, THREE.MeshBasicMaterial>;
-  detail: CubeInfo;
-}[] = [];
+const cubeA = addToScene(cubeDetail.A);
+const cubeB = addToScene(cubeDetail.B);
+const cubeC = addToScene(cubeDetail.C);
+const cubeD = addToScene(cubeDetail.D);
+const cubeE = addToScene(cubeDetail.E);
 
-for (const detail of Object.values(cubeDetail)) {
-  cubes.push({
-    mesh: addToScene(detail),
-    detail,
+camera.position.z = 7;
+
+const animate = (
+  cube: THREE.Mesh<THREE.BoxGeometry, THREE.MeshBasicMaterial>,
+  detail: CubeInfo
+): void => {
+  requestAnimationFrame(() => {
+    animate(cube, detail);
+    cube.rotation.x += detail.rotationX;
+    cube.rotation.y += detail.rotationY;
   });
-}
-
-//球体
-const geometryBall = new THREE.SphereGeometry(2, 64, 32);
-const materialBall = new THREE.MeshBasicMaterial({
-  color: 0xcbc0ff,
-});
-const sphere = new THREE.Mesh(geometryBall, materialBall);
-sphere.position.x = -5;
-sphere.position.y = 2;
-scene.add(sphere);
-
-//カメラとアニメ化-------------------------
-
-camera.position.z = 10;
-
-const animate = () => {
-  requestAnimationFrame(animate);
-
-  for (const { mesh, detail } of cubes) {
-    mesh.rotation.x += detail.rotationX;
-    mesh.rotation.y += detail.rotationY;
-  }
-
-  // 球体の回転
-  sphere.rotation.x += 0.03;
-  sphere.rotation.y += 0.03;
 
   renderer.render(scene, camera);
 };
-animate();
+
+animate(cubeA, cubeDetail.A);
+animate(cubeB, cubeDetail.B);
+animate(cubeC, cubeDetail.C);
+animate(cubeD, cubeDetail.D);
+animate(cubeE, cubeDetail.E);
